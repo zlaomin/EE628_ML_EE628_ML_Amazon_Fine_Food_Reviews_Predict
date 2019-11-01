@@ -11,7 +11,7 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-Give examples
+pip3 install -r requirement.txt
 ```
 
 ### Installing
@@ -21,6 +21,7 @@ A step by step series of examples that tell you how to get a development env run
 Say what the step will be
 
 ```
+git clone https://github.com/zlaomin/EE628_ML_TeamProject_toxic_content_detection.git
 Give the example
 ```
 
