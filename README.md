@@ -1,4 +1,4 @@
-# EE628_ML_TeamProject_toxic_content_detection
+# EE628_ML_TeamProject_Toxic_Content_Detection
 
 One Paragraph of project description goes here
 
