@@ -1,4 +1,4 @@
-# EE628_ML_TeamProject_Toxic_Content_Detection
+# EE628_ML_Amazon_Fine_Food_Reviews_Predict
 
 One Paragraph of project description goes here
 
