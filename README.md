@@ -52,7 +52,6 @@ Say what the step will be
 
 ```
 git clone https://github.com/zlaomin/EE628_ML_TeamProject_toxic_content_detection.git
-Give the example
 ```
 
 
