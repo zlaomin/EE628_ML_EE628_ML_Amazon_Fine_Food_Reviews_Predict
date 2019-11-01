@@ -23,7 +23,7 @@ Finally, we will show our result of these two different methods.
 
 ### Dataset
 
-* [Dataset](https://www.kaggle.com/c/quora-insincere-questions-classification/rules) - Dataset
+* [Download Dataset](https://www.kaggle.com/c/quora-insincere-questions-classification/rules) - Dataset
 
 Dataset files:
 ```
@@ -64,7 +64,7 @@ Add additional notes about how to deploy this on a live system
 ## Authors
 
 * **Yuchen Zeng** [zlaoma](https://github.com/zlaomin)
-* **Yuchen Zeng** [HanyiZhang](https://github.com/HanyiZhang)
+* **Hanyi Zhang** [HanyiZhang](https://github.com/HanyiZhang)
 * **Yarong Liu** [MidgeLiu](https://github.com/MidgeLiu)
 
 
