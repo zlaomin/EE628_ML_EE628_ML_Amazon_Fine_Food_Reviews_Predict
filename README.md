@@ -4,7 +4,33 @@ One Paragraph of project description goes here
 
 ## Introduction
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+In this project, we will predict wheather a question asked on Quora is sincere or not.
+Some characteristics that can signify that a question is insincere:
+* Has a non-neutral tone
+* Is disparaging or inflammatory
+* Isn't grounded in reality
+* Uses sexual content
+We will use Machine learning to achieve our goal.
+
+
+### Methods
+
+In this project, we will firstly introduced a RNN model written by Pytorch. And then, according to the result, we would decide if we need to add some BN layers, drop_out layers and some other LSTM cells to improve the model.
+
+Secondly, we want to build a CNN model which can treat the words equally in a sentence when RNN model will ignore some important words information.
+
+Finally, we will show our result of these two different methods.
+
+### Dataset
+
+* [Dataset](https://www.kaggle.com/c/quora-insincere-questions-classification/rules) - Dataset
+
+Dataset files:
+```
+Train.csv 1.31m * 3
+Test.csv 376 * 2
+Sample_submission.csv
+```
 
 ## Getting Started
 
@@ -34,14 +60,6 @@ Give the example
 
 Add additional notes about how to deploy this on a live system
 
-## Dataset
-
-* [Dataset](https://www.kaggle.com/c/quora-insincere-questions-classification/rules) - Dataset
-
-
-<!-- ## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).  -->
 
 ## Authors
 
@@ -54,9 +72,4 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-<!-- ## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc -->
 
