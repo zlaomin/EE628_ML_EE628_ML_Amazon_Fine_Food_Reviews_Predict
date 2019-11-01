@@ -4,14 +4,9 @@ One Paragraph of project description goes here
 
 ## Introduction
 
-In this project, we will predict wheather a question asked on Quora is sincere or not.
-Some characteristics that can signify that a question is insincere:
-* Has a non-neutral tone
-* Is disparaging or inflammatory
-* Isn't grounded in reality
-* Uses sexual content
-We will use Machine learning to achieve our goal.
+This dataset consists of reivew of fine foods from amazon. Reviews include product and user information, ratings, and a plain text review. It also includes reviews from all other Amazon categories.
 
+We will use the user information, reviews and etc to pridict the rating.
 
 ### Methods
 
@@ -23,13 +18,16 @@ Finally, we will show our result of these two different methods.
 
 ### Dataset
 
-* [Download Dataset](https://www.kaggle.com/c/quora-insincere-questions-classification/rules) - Dataset
+* [Download Dataset](https://www.kaggle.com/snap/amazon-fine-food-reviews/download) - Dataset
 
 Dataset files:
 ```
-Train.csv 1.31m * 3
-Test.csv 376 * 2
-Sample_submission.csv
+TData includes:
+- Reviews from Oct 1999 - Oct 2012
+- 568,454 reviews
+- 256,059 users
+- 74,258 products
+- 260 users with > 50 reviews
 ```
 
 ## Getting Started
@@ -65,6 +63,14 @@ Add additional notes about how to deploy this on a live system
 * **Yuchen Zeng** [zlaoma](https://github.com/zlaomin)
 * **Hanyi Zhang** [HanyiZhang](https://github.com/HanyiZhang)
 * **Yarong Liu** [MidgeLiu](https://github.com/MidgeLiu)
+
+## Acknowledgements
+
+See this SQLite query for a quick sample of the dataset.
+
+If you publish articles based on this dataset, please cite the following paper:
+
+J. McAuley and J. Leskovec. [From amateurs to connoisseurs: modeling the evolution of user expertise through online reviews](http://i.stanford.edu/~julian/pdfs/www13.pdf). WWW, 2013.
 
 
 ## License
