@@ -7,6 +7,7 @@ One Paragraph of project description goes here
 This dataset consists of reivew of fine foods from amazon. Reviews include product and user information, ratings, and a plain text review. It also includes reviews from all other Amazon categories.
 
 We will use the user information, reviews and etc to pridict the rating.
+* [amazon-fine-food-reviews](https://www.kaggle.com/snap/amazon-fine-food-reviews)
 
 ### Methods
 
