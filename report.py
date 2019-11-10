@@ -42,6 +42,6 @@ def graphic(cursor, productid_ids):
 if __name__ == "__main__":
     conn = sqlite3.connect('database.sqlite')
     command = conn.cursor()
-    graphic(command, constant.top_product_id[0])
+    graphic(command, constant.top_product_id)
     conn.close()
     print("Opened database successfully")
