@@ -49,6 +49,7 @@ def graphic(cursor, product_ids):
         season = season.reset_index()
         score = list(season.Score['mean'])
         time = (list(season.Time))
+
         time_list = []
         score_list = []
         for i,j in zip(time, score):
@@ -61,8 +62,14 @@ def graphic(cursor, product_ids):
         p0 = [1, 1, 1, 1]
         par, i = leastsq(err_3, p0, args=(x, y))
         # combine 5 'time' into 1 x_ticks
-        x_ticks = time[::5]
-        plt.xticks(x[::5], x_ticks)
+        time = time[::4]
+        x_ticks = []
+        plt.clf()
+        plt.cla()
+        for i in time:
+            x_ticks.append(i.to_period('M').strftime('%F-Q%q'))
+        plt.xticks(x[::4], x_ticks)
+        # draw
         value = par[0] * pow(x, 3) + par[1] * pow(x, 2) + par[2] * x + par[3]
         # plt.plot(x, value, '-r', label='line')
         plt.plot(x, value, color="blue", linewidth=1.5)
@@ -72,7 +79,7 @@ def graphic(cursor, product_ids):
         value = par[0] * pow(x, 4) + par[1] * pow(x, 3) + par[2] * pow(x, 2) + par[3] * x + par[4]
         plt.plot(x, value, color="red", linewidth=1.5)
         plt.scatter(x, y, c='r', marker='o')
-        plt.savefig("/images/" + p_id + ".png")
+        plt.savefig("images/" + p_id + ".png")
 
 
 if __name__ == "__main__":
