@@ -1,11 +1,19 @@
+import math
 import sqlite3
-import constant
+import sys
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-import math
 from scipy.optimize import leastsq
-from scipy import stats
+from sklearn import neighbors
+from sklearn.cluster import KMeans
+from sklearn.decomposition import PCA
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import normalize
+
+import constant
 
 
 def cal(p, x):
@@ -34,7 +42,7 @@ def err_4(p, x, y):
 
 
 # get a list of string(product_id). Result is a graphic
-def graphic(cursor, product_ids):
+def regression(cursor, product_ids):
     for p_id in product_ids:
         products = cursor.execute(
             "SELECT Time, Score FROM reviews Where Productid={Productid}".format(Productid="'"+p_id+"'")
@@ -82,9 +90,103 @@ def graphic(cursor, product_ids):
         plt.savefig("images/" + p_id + ".png")
 
 
+def data(cursor, product_ids):
+    total = 0;
+    for p_id in product_ids:
+        products_reviews = cursor.execute(
+            "SELECT Text FROM reviews Where Productid={Productid}".format(Productid="'"+p_id+"'")
+        ).fetchall()
+        total += len(products_reviews)
+    print(total)
+        # arr = np.empty([len(products_reviews), 1], dtype = int)
+        # for num in range(len(products_reviews)):
+        #     arr[num] = len(products_reviews[num][0])
+
+
+def k_means(cursor, product_ids):
+    train = []
+    label = []
+    for p_id in constant.top_product_id:
+        products_review = cursor.execute(
+            "SELECT Text, Score FROM reviews Where Productid={Productid}".format(Productid="'"+p_id+"'")
+        ).fetchall()
+        pd_products_review = pd.DataFrame(products_review)
+        t_list = pd_products_review[0].tolist()
+        train += t_list
+        label = pd_products_review[1].tolist()
+        label += label
+    tf_idf_vectorizor = TfidfVectorizer(stop_words='english',#tokenizer = tokenize_and_stem,
+                                        max_features=20000)
+    tf_idf = tf_idf_vectorizor.fit_transform(train)
+    tf_idf_norm = normalize(tf_idf)
+    tf_idf_array = tf_idf_norm.toarray()
+    sklearn_pca = PCA(n_components = 2)
+    Y_sklearn = sklearn_pca.fit_transform(tf_idf_array)
+
+    km = KMeans(n_clusters=5, init='k-means++', max_iter=300, n_init=1,
+                verbose=False)
+    fitted = km.fit(Y_sklearn)
+    prediction = km.predict(Y_sklearn)
+    test = 0
+    for p_id in constant.test:
+        products_review = cursor.execute(
+            "SELECT Text, Score FROM reviews Where Productid={Productid}".format(Productid="'"+p_id+"'")
+        ).fetchall()
+        test += len(products_review)
+
+
+def knn(cursor, product_ids):
+    train = []
+    label = []
+    for p_id in constant.top_product_id:
+        products_review = cursor.execute(
+            "SELECT Text, Score FROM reviews Where Productid={Productid}".format(Productid="'"+p_id+"'")
+        ).fetchall()
+        pd_products_review = pd.DataFrame(products_review)
+        t_list = pd_products_review[0].tolist()
+        train += t_list
+        t_label = pd_products_review[1].tolist()
+        label += t_label
+    # tf_idf_vectorizor = TfidfVectorizer(stop_words='english',#tokenizer = tokenize_and_stem,
+    #                                     max_features=20000)
+    tf_idf_vectorizor = TfidfVectorizer(max_features=20000)
+    tf_idf = tf_idf_vectorizor.fit_transform(train)
+    tf_idf_norm = normalize(tf_idf)
+    tf_idf_array = tf_idf_norm.toarray()
+    sklearn_pca = PCA(n_components = 2)
+    Y_sklearn = sklearn_pca.fit_transform(tf_idf_array)
+    x_train, x_test, y_train, y_test = train_test_split(Y_sklearn, label, test_size = 0.2)
+    km = KMeans(n_clusters=5, init='k-means++', max_iter=300, n_init=1,
+                verbose=False)
+    clf = neighbors.KNeighborsClassifier(algorithm='kd_tree')
+    clf.fit(x_train, y_train)
+    # precision, recall, thresholds = precision_recall_curve(y_test, clf.predict(x_test))
+    y_predict = clf.predict(x_test)
+    res = 0
+    for i in range(len(y_predict)):
+        if y_predict[i] == y_test[i]:
+            res += 1
+    precision = res/len(y_predict)
+    print("precision", precision)
+
+
 if __name__ == "__main__":
     conn = sqlite3.connect('database.sqlite')
     command = conn.cursor()
-    graphic(command, constant.top_product_id)
+    if len(sys.argv) > 2:
+        cmd = sys.argv[1]
+        op = sys.argv[2]
+        if op == "test":
+            data = constant.test
+        else:
+            data = constant.train
+    else:
+        cmd = sys.argv[1]
+        data = constant.top_product_id
+    # try:
+    locals()[cmd](command, data)
+    # except Exception as e:
+    #     print("You must input regression, data or k_means")
+    #     print(e)
     conn.close()
     print("Opened database successfully")
