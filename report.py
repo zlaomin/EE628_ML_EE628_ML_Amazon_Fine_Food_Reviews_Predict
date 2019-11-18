@@ -133,7 +133,6 @@ def find_stopwords(cursor, product_ids):
     # print(order)
 
 
-
 def k_means(cursor, product_ids):
     train = []
     label = []

@@ -64,7 +64,7 @@ Add additional notes about how to deploy this on a live system
 * **Yuchen Zeng** [zlaoma](https://github.com/zlaomin)
 * **Hanyi Zhang** [HanyiZhang](https://github.com/HanyiZhang)
 * **Yarong Liu** [MidgeLiu](https://github.com/MidgeLiu)
-
+********
 ## Acknowledgements
 
 See this SQLite query for a quick sample of the dataset.

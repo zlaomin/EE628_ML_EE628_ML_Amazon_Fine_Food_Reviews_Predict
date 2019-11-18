@@ -20,14 +20,14 @@ test = [
 
 stopwords = {'i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', 'your', 'yours', 'yourself',
              'yourselves', 'he', 'him', 'his', 'himself', 'she', 'her', 'hers', 'herself', 'it', 'its', 'itself',
-             'they', 'them', 'their', 'theirs', 'themselves', 'which', 'who', 'whom', 'this', 'that', 'these',
-             'those', 'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do',
-             'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until', 'while',
-             'of', 'at', 'by', 'for', 'with', 'about', 'between', 'into', 'through', 'during', 'before',
-             'after', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'again',
-             'then', 'once', 'here', 'when', 'where', 'all', 'any', 'both', 'each',
+             'them', 'theirs', 'themselves', 'which', 'who', 'whom', 'that', 'these',
+             'those', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do',
+             'does', 'doing', 'a', 'an', 'the', 'and', 'but', 'or', 'because', 'as', 'while',
+             'of', 'at', 'by', 'for', 'with', 'about', 'between', 'into', 'through',
+             'to', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'again',
+             'here', 'when', 'all', 'any', 'both', 'each',
              'few', 'more', 'most', 'other', 'some', 'such', 'only', 'own', 'so', 'than',
-             'too', 'very', 's', 'can', 'will', 'just', 'don', 'now'}
+             'too', 'very', 's', 'can', 'will', 'just'}
 
 ori_stopwords = {'i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', 'your', 'yours', 'yourself',
                  'yourselves', 'he', 'him', 'his', 'himself', 'she', 'her', 'hers', 'herself', 'it', 'its', 'itself',
