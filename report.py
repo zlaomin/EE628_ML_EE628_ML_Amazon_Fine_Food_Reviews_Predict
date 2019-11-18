@@ -14,6 +14,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import normalize
 
 import constant
+import error_raw_data
+import error_stopwords
 
 
 def cal(p, x):
@@ -90,17 +92,46 @@ def regression(cursor, product_ids):
         plt.savefig("images/" + p_id + ".png")
 
 
-def data(cursor, product_ids):
-    total = 0;
-    for p_id in product_ids:
-        products_reviews = cursor.execute(
-            "SELECT Text FROM reviews Where Productid={Productid}".format(Productid="'"+p_id+"'")
-        ).fetchall()
-        total += len(products_reviews)
-    print(total)
-        # arr = np.empty([len(products_reviews), 1], dtype = int)
-        # for num in range(len(products_reviews)):
-        #     arr[num] = len(products_reviews[num][0])
+def data_ana(cursor, product_ids):
+    words = {}
+    with open('X_test.txt', 'rt') as f:
+        data = f.read()
+        products_reviews = data.split("\n")
+        for comment in products_reviews:
+            for stop_word in constant.ori_stopwords:
+                occur = comment.count(stop_word)
+                if occur > 0:
+                    if stop_word in words:
+                        words[stop_word] += occur
+                    else:
+                        words[stop_word] = occur
+    print(words)
+    error_stop_words = {}
+    for comment in error_raw_data.error_raw_data:
+        for stop_word in constant.ori_stopwords:
+            occur = comment.count(stop_word)
+            if occur > 0:
+                if stop_word in error_stop_words:
+                    error_stop_words[stop_word] += occur
+                else:
+                    error_stop_words[stop_word] = occur
+    print(error_stop_words)
+
+
+def find_stopwords(cursor, product_ids):
+    res = {}
+    for key in error_stopwords.stopwords.keys():
+        num_in_error = error_stopwords.error_stopwords.get(key, 0)
+        res[key] = num_in_error / error_stopwords.stopwords[key]
+    order = sorted(res.items(), key=lambda item:item[1], reverse = True)
+    print(order)
+    # print(order[-10:])
+    # for i in order:
+    #     print("key: " + i + "res: " + str(
+    #         res[i]
+    #     ))
+    # print(order)
+
 
 
 def k_means(cursor, product_ids):
@@ -183,10 +214,10 @@ if __name__ == "__main__":
     else:
         cmd = sys.argv[1]
         data = constant.top_product_id
-    # try:
-    locals()[cmd](command, data)
-    # except Exception as e:
-    #     print("You must input regression, data or k_means")
-    #     print(e)
+    try:
+        globals()[cmd](command, data)
+    except Exception as e:
+        print("You must input regression, data_ana or k_means")
+        raise(e)
     conn.close()
     print("Opened database successfully")
