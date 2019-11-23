@@ -38,11 +38,11 @@ These instructions will get you a copy of the project up and running on your loc
 ## Filesystem hierarchy
 
 ```
-Trend_chat: The Trend chart of our data produced by report.py
-test_result: output of all our experiment
-error_stopwords.py: it contained the frequency of stopwords in the failed simple.
-We are trying to use this to find out the relationshop between stopwords map and performence. 
-report.py: 
+- Trend_chat: The Trend chart of our data produced by report.py
+- test_result: output of all our experiment
+- error_stopwords.py: it contained the frequency of stopwords in the failed simple.
+  We are trying to use this to find out the relationshop between stopwords map and performence. 
+- report.py: 
 ```
 ### Prerequisites
 
