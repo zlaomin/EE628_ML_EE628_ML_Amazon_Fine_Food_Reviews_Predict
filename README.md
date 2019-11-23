@@ -23,7 +23,7 @@ Finally, we will show our result of these two different methods.
 
 Dataset files:
 ```
-TData includes:
+Data includes:
 - Reviews from Oct 1999 - Oct 2012
 - 568,454 reviews
 - 256,059 users
@@ -35,6 +35,15 @@ TData includes:
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+## Filesystem hierarchy
+
+```
+Trend_chat: The Trend chart of our data produced by report.py
+test_result: output of all our experiment
+error_stopwords.py: it contained the frequency of stopwords in the failed simple.
+We are trying to use this to find out the relationshop between stopwords map and performence. 
+report.py: 
+```
 ### Prerequisites
 
 What things you need to install the software and how to install them
@@ -65,13 +74,8 @@ Add additional notes about how to deploy this on a live system
 * **Hanyi Zhang** [HanyiZhang](https://github.com/HanyiZhang)
 * **Yarong Liu** [MidgeLiu](https://github.com/MidgeLiu)
 ********
-## Acknowledgements
 
-See this SQLite query for a quick sample of the dataset.
 
-If you publish articles based on this dataset, please cite the following paper:
-
-J. McAuley and J. Leskovec. [From amateurs to connoisseurs: modeling the evolution of user expertise through online reviews](http://i.stanford.edu/~julian/pdfs/www13.pdf). WWW, 2013.
 
 
 ## License

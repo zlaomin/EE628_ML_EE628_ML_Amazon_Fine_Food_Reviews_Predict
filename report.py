@@ -138,7 +138,8 @@ def k_means(cursor, product_ids):
     label = []
     for p_id in constant.top_product_id:
         products_review = cursor.execute(
-            "SELECT Text, Score FROM reviews Where Productid={Productid}".format(Productid="'"+p_id+"'")
+            # "SELECT Text, Score FROM reviews Where Productid={Productid}".format(Productid="'"+p_id+"'")
+            "SELECT Text, Score FROM reviews"
         ).fetchall()
         pd_products_review = pd.DataFrame(products_review)
         t_list = pd_products_review[0].tolist()
@@ -171,6 +172,7 @@ def knn(cursor, product_ids):
     for p_id in constant.top_product_id:
         products_review = cursor.execute(
             "SELECT Text, Score FROM reviews Where Productid={Productid}".format(Productid="'"+p_id+"'")
+            # "SELECT Text, Score FROM reviews"
         ).fetchall()
         pd_products_review = pd.DataFrame(products_review)
         t_list = pd_products_review[0].tolist()
@@ -179,15 +181,13 @@ def knn(cursor, product_ids):
         label += t_label
     # tf_idf_vectorizor = TfidfVectorizer(stop_words='english',#tokenizer = tokenize_and_stem,
     #                                     max_features=20000)
-    tf_idf_vectorizor = TfidfVectorizer(max_features=20000)
+    tf_idf_vectorizor = TfidfVectorizer(max_features=20000, stop_words=constant.stopwords)
     tf_idf = tf_idf_vectorizor.fit_transform(train)
     tf_idf_norm = normalize(tf_idf)
     tf_idf_array = tf_idf_norm.toarray()
     sklearn_pca = PCA(n_components = 2)
     Y_sklearn = sklearn_pca.fit_transform(tf_idf_array)
     x_train, x_test, y_train, y_test = train_test_split(Y_sklearn, label, test_size = 0.2)
-    km = KMeans(n_clusters=5, init='k-means++', max_iter=300, n_init=1,
-                verbose=False)
     clf = neighbors.KNeighborsClassifier(algorithm='kd_tree')
     clf.fit(x_train, y_train)
     # precision, recall, thresholds = precision_recall_curve(y_test, clf.predict(x_test))
