@@ -15,7 +15,7 @@ In this project, we will firstly introduced a RNN model written by Pytorch. And 
 
 Secondly, we want to build a CNN model which can treat the words equally in a sentence when RNN model will ignore some important words information.
 
-Finally, we will show our result of these two different methods.
+Finally, we will show our result of these two different methods--seq2seq and KNN.
 
 ### Dataset
 
@@ -30,6 +30,7 @@ Data includes:
 - 74,258 products
 - 260 users with > 50 reviews
 ```
+*[Here is the training, validation and test data](https://drive.google.com/drive/folders/1CNXHHPrlgKYVqdQ3WUHy1uKAv7PazUOw)
 
 ## Getting Started
 
