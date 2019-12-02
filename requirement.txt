@@ -1,0 +1,4 @@
+pandas
+matplotlib
+sqlite3
+sklearn
