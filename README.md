@@ -13,7 +13,7 @@ We will use the user information, reviews and etc to pridict the rating.
 
 In this project, we will firstly introduced a RNN model written by Pytorch. And then, according to the result, we would decide if we need to add some BN layers, drop_out layers and some other LSTM cells to improve the model.
 
-Secondly, we want to build a CNN model which can treat the words equally in a sentence when RNN model will ignore some important words information.
+Secondly, we want to build a CNN model which can treat the words equally in a sentence when RNN model will ignore some important words information. Stopword is also an important way to improve the accuracy of model.
 
 Finally, we will show our result of these two different methods--seq2seq and KNN.
 
@@ -30,7 +30,7 @@ Data includes:
 - 74,258 products
 - 260 users with > 50 reviews
 ```
-*[Here is the training, validation and test data](https://drive.google.com/drive/folders/1CNXHHPrlgKYVqdQ3WUHy1uKAv7PazUOw)
+* [Here is the training, validation and test data](https://drive.google.com/drive/folders/1CNXHHPrlgKYVqdQ3WUHy1uKAv7PazUOw)
 
 ## Getting Started
 
