@@ -65,6 +65,10 @@ Say what the step will be
 git clone https://github.com/zlaomin/EE628_ML_TeamProject_toxic_content_detection.git
 ```
 
+And Download dataset from 
+* [Download Dataset](https://www.kaggle.com/snap/amazon-fine-food-reviews/download) - Dataset
+Then put it into folder KNN and Trendchat
+
 
 ## Deployment
 
